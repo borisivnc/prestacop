@@ -9,7 +9,7 @@ class Drone(val xc: DataFrame) {
 
     val randomRow = violations.sample(false,0.1).limit(1).toDF()
 
-    randomRow.show(1)
+    randomRow.show()
 
     val plate_id = randomRow.first().getString(0)
     val violation_description = randomRow.first().getString(1)
