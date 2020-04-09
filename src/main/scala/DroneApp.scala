@@ -7,7 +7,7 @@ import org.apache.kafka.common.serialization.StringSerializer
 
 object DroneApp extends App {
 
-  System.setProperty("hadoop.home.dir", "C:\\winutils\\")
+  //System.setProperty("hadoop.home.dir", "C:\\winutils\\")
 
   val conf = new SparkConf()
     .setMaster("local")
@@ -33,7 +33,7 @@ object DroneApp extends App {
 
   val producer: KafkaProducer[String, String] = new KafkaProducer[String,String](props)
 
-  val sourceDf = spark.read.format("csv").option("header", "true").load("C:\\Users\\boris\\IdeaProjects\\fdp_project-master\\IdeaProjects\\project\\parking_violations.csv")
+  val sourceDf = spark.read.format("csv").option("header", "true").load("parking_violations.csv")
   val violationsDataFrame = sourceDf.select("Plate ID", "Violation description", "House Number","Street Name").toDF()
 
   val drones = Array(
